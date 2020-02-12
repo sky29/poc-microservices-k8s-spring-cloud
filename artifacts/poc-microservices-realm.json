@@ -1,0 +1,59 @@
+{
+    "realm": "poc-microservices",
+    "enabled": true,
+    "users" : [
+        {
+            "username" : "akash",
+            "enabled": true,
+            "email" : "akkiagrawal.29@gmail.com",
+            "firstName": "Akash",
+            "lastName": "Agrawal",
+            "credentials" : [
+                { "type" : "password",
+                  "value" : "akash" }
+            ],
+            "realmRoles": [ "user" ],
+            "clientRoles": {
+                "account": ["view-profile", "manage-account"]
+            }
+        }
+    ],
+    "roles" : {
+        "realm" : [
+            {
+                "name": "user",
+                "description": "User privileges"
+            },
+            {
+                "name": "admin",
+                "description": "Administrator privileges"
+            }
+        ]
+    },
+    "scopeMappings": [
+        {
+            "client": "js-console",
+            "roles": ["user"]
+        }
+    ],
+    "clients": [
+        {
+            "clientId": "js-console",
+            "enabled": true,
+            "publicClient": true,
+            "baseUrl": "/js-console",
+            "redirectUris": [
+                "/js-console/*"
+            ],
+            "webOrigins": []
+        }
+    ],
+    "clientScopeMappings": {
+        "account": [
+            {
+                "client": "js-console",
+                "roles": ["view-profile"]
+            }
+        ]
+    }
+}

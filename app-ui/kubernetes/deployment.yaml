@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-ui
+  labels:
+    app: app-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-ui
+  template:
+    metadata:
+      labels:
+        app: app-ui
+    spec:
+      containers:
+      - name: app-ui
+        image: akashdocker29/app-ui:0.0.3-SNAPSHOT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-ui
+  labels:
+    app: app-ui
+spec:
+  ports:
+  - port: 9006
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: app-ui
+  type: LoadBalancer

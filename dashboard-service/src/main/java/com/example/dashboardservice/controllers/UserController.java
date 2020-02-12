@@ -1,25 +1,26 @@
 package com.example.dashboardservice.controllers;
 
-import com.example.dashboardservice.models.HelloModel;
+import com.example.dashboardservice.models.UserModel;
+import com.example.dashboardservice.services.UserService;
 import com.google.gson.Gson;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class UserController {
 
     @Autowired
-    HelloModel helloModel;
+    UserService userService;
 
     @Autowired
     Gson g;
     
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/dashboard/hello")
-    public String getHello() {
-        return g.toJson(helloModel);
+    @PostMapping("/dashboard/user/create")
+    public String createUser(UserModel userModel) {
+        return userService.createUser(userModel);
     }
 }
