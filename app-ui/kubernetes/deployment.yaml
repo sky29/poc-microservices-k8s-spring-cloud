@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app-ui
-        image: akashdocker29/app-ui:0.0.3-SNAPSHOT
+        image: akashdocker29/app-ui:0.0.1-SNAPSHOT
         imagePullPolicy: Always
         ports:
         - containerPort: 80

@@ -4,6 +4,7 @@ import com.example.marketservice.models.HelloModel;
 import com.google.gson.Gson;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class HelloController {
     
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/market/hello")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
     public String getHello() {
         return g.toJson(helloModel);
     }
