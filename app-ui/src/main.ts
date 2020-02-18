@@ -12,7 +12,7 @@ if (environment.production) {
 
 //keycloak init options
 let initOptions = {
-  url: 'http://35.192.96.96:8080/auth', realm: 'poc-microservices', clientId: 'app-ui'
+  url: 'http://34.69.233.211:8080/auth', realm: 'poc-microservices', clientId: 'app-ui'
 }
 
 let keycloak = Keycloak(initOptions);
