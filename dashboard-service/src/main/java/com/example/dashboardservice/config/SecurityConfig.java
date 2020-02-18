@@ -1,7 +1,6 @@
 package com.example.dashboardservice.config;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -42,15 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return jwtAuthenticationConverter;
 	}
 
-	@Bean
-	public JwtDecoder jwtDecoderByIssuerUri(OAuth2ResourceServerProperties properties) {
-		String issuerUri = properties.getJwt().getIssuerUri();
-		NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromIssuerLocation(issuerUri);
-		// Use preferred_username from claims as authentication name, instead of UUID subject
-		//jwtDecoder.setClaimSetConverter(new UsernameSubClaimAdapter());
-		return jwtDecoder;
-    }
-    
 }
 
 class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<GrantedAuthority>> {

@@ -21,19 +21,18 @@
 
 	<dependencies>
 
-		<!-- JWT handling -->
+		<!-- OAUTH2 RESOURCE SERVER dependency (used for Token Validation) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
-
-		<!-- KEYCLOAK ADMIN CLIENT dependency -->
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-admin-client</artifactId>
-			<version>3.1.0.Final</version>
-		</dependency>
 		
+		<!-- SPRING SECURITY dependency -->
+		<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-security</artifactId>
+    	</dependency>
+    
 		<!-- REST dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

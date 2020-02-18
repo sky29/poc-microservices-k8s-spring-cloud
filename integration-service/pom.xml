@@ -12,7 +12,7 @@
 	<artifactId>integration-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>integration-service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Integration Service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -21,12 +21,18 @@
 
 	<dependencies>
 		
-		<!-- JWT handling -->
+		<!-- OAUTH2 RESOURCE SERVER dependency (used for Token Validation) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 		
+		<!-- SPRING SECURITY dependency -->
+		<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-security</artifactId>
+    	</dependency>
+    
 		<!-- REST dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
