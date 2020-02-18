@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: market-service
+data:
+  bootstrap.properties: |-
+    server.port=9003

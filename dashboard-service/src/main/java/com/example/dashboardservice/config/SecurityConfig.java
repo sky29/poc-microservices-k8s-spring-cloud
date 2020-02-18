@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().anyRequest().authenticated();
     
         // Allow showing pages within a frame
-		http.headers().frameOptions().sameOrigin();
+		// http.headers().frameOptions().sameOrigin();
 	}
 
 	private JwtAuthenticationConverter jwtAuthenticationConverter() {

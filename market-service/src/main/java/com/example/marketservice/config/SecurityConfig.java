@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().anyRequest().authenticated();
     
         // Allow showing pages within a frame
-		http.headers().frameOptions().sameOrigin();
+		// http.headers().frameOptions().sameOrigin();
 	}
 
 	private JwtAuthenticationConverter jwtAuthenticationConverter() {
