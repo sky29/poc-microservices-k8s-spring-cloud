@@ -33,4 +33,4 @@ spec:
     protocol: TCP
   selector:
     app: dashboard-service
-  type: LoadBalancer
+  type: ClusterIP

@@ -33,4 +33,4 @@ spec:
     protocol: TCP
   selector:
     app: customer-service
-  type: LoadBalancer
+  type: ClusterIP
