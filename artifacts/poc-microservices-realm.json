@@ -1,59 +1,100 @@
 {
     "realm": "poc-microservices",
     "enabled": true,
+	"roles" : {
+		"client": {
+			"app-ui": [
+				{			
+				  "name": "USER",
+				  "clientRole": true
+				}
+			 ],
+			 "gateway-service": [
+				{			
+				  "name": "USER",
+				  "clientRole": true
+				}
+			 ]
+		}
+    },
     "users" : [
-        {
-            "username" : "akash",
+		{
+            "username" : "bob",
             "enabled": true,
-            "email" : "akkiagrawal.29@gmail.com",
-            "firstName": "Akash",
-            "lastName": "Agrawal",
+            "email" : "bob@test.com",
+            "firstName": "bob",
+            "lastName": "bob",
             "credentials" : [
                 { "type" : "password",
-                  "value" : "akash" }
+                  "value" : "password" }
             ],
-            "realmRoles": [ "user" ],
-            "clientRoles": {
-                "account": ["view-profile", "manage-account"]
+			"realmRoles": [ "offline_access" ],
+			"clientRoles": {
+                "app-ui": [ "USER" ],
+				"gateway-service": [ "USER" ]
+            }
+        },
+        {
+            "username" : "alice",
+            "enabled": true,
+            "email" : "alice@test.com",
+            "firstName": "alice",
+            "lastName": "alice",
+            "credentials" : [
+                { "type" : "password",
+                  "value" : "password" }
+            ],
+			"realmRoles": [ "offline_access" ],
+			"clientRoles": {
+                "app-ui": [ "USER" ],
+				"gateway-service": [ "USER" ]
             }
         }
     ],
-    "roles" : {
-        "realm" : [
-            {
-                "name": "user",
-                "description": "User privileges"
-            },
-            {
-                "name": "admin",
-                "description": "Administrator privileges"
-            }
-        ]
-    },
-    "scopeMappings": [
+	"clients": [
         {
-            "client": "js-console",
-            "roles": ["user"]
-        }
-    ],
-    "clients": [
-        {
-            "clientId": "js-console",
+            "clientId": "app-ui",
             "enabled": true,
             "publicClient": true,
-            "baseUrl": "/js-console",
-            "redirectUris": [
-                "/js-console/*"
-            ],
-            "webOrigins": []
+            "baseUrl": "/",
+			"redirectUris": ["*"],
+            "webOrigins": ["*"],
+			"protocolMappers": [
+				{
+				  "protocolMapper" : "oidc-usermodel-property-mapper",
+				  "protocol" : "openid-connect",
+				  "name" : "Username",
+				  "config" : {
+					"Claim JSON Type" : "String",
+					"user.attribute" : "username",
+					"claim.name" : "user_name",
+					"id.token.claim" : "true",
+					"access.token.claim" : "true"
+				  }
+				}
+			]
+        },
+		{
+            "clientId": "gateway-service",
+            "enabled": true,
+            "publicClient": false,
+            "baseUrl": "/",
+			"redirectUris": ["*"],
+            "webOrigins": ["*"],
+			"protocolMappers": [
+				{
+				  "protocolMapper" : "oidc-usermodel-property-mapper",
+				  "protocol" : "openid-connect",
+				  "name" : "Username",
+				  "config" : {
+					"Claim JSON Type" : "String",
+					"user.attribute" : "username",
+					"claim.name" : "user_name",
+					"id.token.claim" : "true",
+					"access.token.claim" : "true"
+				  }
+				}
+			]
         }
-    ],
-    "clientScopeMappings": {
-        "account": [
-            {
-                "client": "js-console",
-                "roles": ["view-profile"]
-            }
-        ]
-    }
+    ]
 }
